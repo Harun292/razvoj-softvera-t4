@@ -55,6 +55,6 @@ public class Racun {
             output.append(stavka.getArtikal().getSifra()).append(" ").append(stavka.getKolicina()).append(" ").append(stavka.getArtikal().getCijena() * stavka.getKolicina()).append("\n");
         }
         output.append("Ukupan iznos: ").append((ukupanIznos()));
-        return output ;
+        return output.toString();
     }
 }
