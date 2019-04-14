@@ -7,6 +7,12 @@ public class Racun {
        private Artikal artikal;
        private int kolicina;
 
+        public Stavka(Artikal artikal, int kolicina) {
+            this.artikal = artikal;
+            this.kolicina = kolicina;
+
+        }
+
         public Artikal getArtikal() {
             return artikal;
         }
@@ -23,11 +29,7 @@ public class Racun {
             this.kolicina = kolicina;
         }
 
-        public Stavka(Artikal artikal, int kolicina) {
-            this.artikal = artikal;
-            this.kolicina = kolicina;
 
-        }
     }
     private ArrayList<Stavka>stavke;
 

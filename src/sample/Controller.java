@@ -3,9 +3,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 
 
 import java.net.URL;
@@ -13,11 +11,13 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    public TextArea sourceField;
-    public TextArea destinationField;
-    public ChoiceBox<Artikal> artikalChoiceBox;
-    public TextArea iznosArea;
-    public Spinner kolicinaSpinner;
+    public TextField polje;
+    public TextField polje2;
+    public ChoiceBox<Artikal> artikalCB;
+    public TextArea iznospolje;
+    public Spinner kolicina;
+    public Button dodaj;
+    public Button dodaj1;
     private Racun racun;
     private ArrayList<Artikal> result;
     private ObservableList<Artikal> lista = FXCollections.observableArrayList();
@@ -26,7 +26,7 @@ public class Controller implements Initializable {
 
 
     public void dodaj(ActionEvent actionEvent) {
-        String source = sourceField.getText();
+        String source = polje.getText();
         String[] artikli = source.split("\n");
         ArrayList<Artikal> kanta = new ArrayList<>();
         for (String element : artikli) {
@@ -37,17 +37,17 @@ public class Controller implements Initializable {
         for (Artikal element : kanta) {
             rezultat += element + "\n";
         }
-        destinationField.setText(rezultat);
+        polje2.setText(rezultat);
         racun = new Racun();
         result= new ArrayList<>(kanta);
         lista.addAll(result);
-        artikalChoiceBox.setItems(lista);
+        artikalCB.setItems(lista);
     }
 
     public void dodajNaRacun(ActionEvent actionEvent) {
-        racun.dodajStavku(artikalChoiceBox.getSelectionModel().getSelectedItem(),
-                (Integer) kolicinaSpinner.getValue());
-        iznosArea.setText(racun.toString());
+        racun.dodajStavku(artikalCB.getSelectionModel().getSelectedItem(),
+                (Integer)kolicina.getValue());
+        iznospolje.setText(racun.toString());
     }
 
     @Override

@@ -46,10 +46,12 @@ public class Artikal {
         return  this.sifra + "," + naziv + "," + cijena;
     }
     public boolean equals(Object o){
+        if(this==o)return true;
+        if(!(o instanceof Artikal))return false;
         Artikal artikal=(Artikal)o;
-        if(!naziv.equals(artikal.getNaziv()))
+        if(!getNaziv().equals(artikal.getNaziv()))
             return false;
-        if(!sifra.equals(artikal.getSifra()))
+        if(!getSifra().equals(artikal.getSifra()))
             return false;
         if(Double.compare(cijena, artikal.getCijena())!=0)
             return false;
