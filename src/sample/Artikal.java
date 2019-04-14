@@ -43,7 +43,7 @@ public class Artikal {
 
     @Override
     public String toString() {
-        return  sifra + "," + naziv + "," + cijena;
+        return  this.sifra + "," + naziv + "," + cijena;
     }
     public boolean equals(Object o){
         Artikal artikal=(Artikal)o;
@@ -57,6 +57,19 @@ public class Artikal {
         return true;
 
     }
+
+    @Override
+    public int hashCode() {
+        int rezultat;
+        long pomocna;
+        rezultat=getSifra()!=null? getSifra().hashCode():0;
+        rezultat=31*rezultat+(getNaziv()!= null ? getNaziv().hashCode() : 0);
+        pomocna=Double.doubleToLongBits(getCijena());
+        rezultat=31*rezultat+(int)(pomocna^(pomocna >>> 32));
+        return rezultat;
+    }
+
+
     public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> artikli){
         for(int i =0;i<artikli.size();i++){
             for(int j=i+1;j<artikli.size();j++){
